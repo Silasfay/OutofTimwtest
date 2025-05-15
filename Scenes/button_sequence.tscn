@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://dic7nd0jihaek"]
+
+[ext_resource type="Texture2D" uid="uid://d283cg0pyye3j" path="res://Sprites/Assets/Keyboard & Mouse/Default/keyboard_arrow_down_outline.png" id="1_o2ixp"]
+[ext_resource type="Script" path="res://Scenes/button_sequence.gd" id="1_y4i87"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qflju"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="ButtonSequence" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_y4i87")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+color = Color(0.360784, 0.360784, 0.360784, 0.588235)
+
+[node name="Container" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qflju")
+
+[node name="MarginContainer" type="MarginContainer" parent="Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ButtonBox" type="HBoxContainer" parent="Container/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="Container/MarginContainer/ButtonBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("1_o2ixp")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Container/MarginContainer/ButtonBox"]
+layout_mode = 2
+texture = ExtResource("1_o2ixp")
+
+[node name="TextureRect3" type="TextureRect" parent="Container/MarginContainer/ButtonBox"]
+layout_mode = 2
+texture = ExtResource("1_o2ixp")
+
+[node name="TextureRect4" type="TextureRect" parent="Container/MarginContainer/ButtonBox"]
+layout_mode = 2
+texture = ExtResource("1_o2ixp")
+
+[node name="TextureRect5" type="TextureRect" parent="Container/MarginContainer/ButtonBox"]
+layout_mode = 2
+texture = ExtResource("1_o2ixp")
+
+[node name="TextureRect6" type="TextureRect" parent="Container/MarginContainer/ButtonBox"]
+layout_mode = 2
+texture = ExtResource("1_o2ixp")
+
+[node name="TextureRect7" type="TextureRect" parent="Container/MarginContainer/ButtonBox"]
+layout_mode = 2
+texture = ExtResource("1_o2ixp")
+
+[node name="TextureRect8" type="TextureRect" parent="Container/MarginContainer/ButtonBox"]
+layout_mode = 2
+texture = ExtResource("1_o2ixp")
+
+[node name="TimeLeft" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 770.0
+offset_top = 166.0
+offset_right = 909.0
+offset_bottom = 262.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 70
+
+[node name="SuccessLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 312.0
+offset_top = 75.0
+offset_right = 779.0
+offset_bottom = 212.0
+rotation = 0.132645
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 100
+text = "Time Lost"
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

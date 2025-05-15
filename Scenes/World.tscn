@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://mos0mifxa10m"]
+
+[ext_resource type="Script" path="res://Scripts/World.gd" id="1_bpvhb"]
+[ext_resource type="PackedScene" uid="uid://4rlgba2cudgo" path="res://Scenes/Clock.tscn" id="2_nisq0"]
+[ext_resource type="Theme" uid="uid://dewa3r78cmkod" path="res://Scenes/MainButtons.tres" id="3_weu2x"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_bpvhb")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Clock" parent="." instance=ExtResource("2_nisq0")]
+
+[node name="Life" type="Timer" parent="."]
+process_mode = 3
+wait_time = 300.0
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 359.0
+offset_top = 64.0
+offset_right = 399.0
+offset_bottom = 87.0
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -237.0
+offset_top = -310.0
+offset_right = -197.0
+offset_bottom = -287.0
+
+[node name="Label4" type="Label" parent="."]
+offset_left = -571.0
+offset_top = -257.0
+offset_right = -531.0
+offset_bottom = -234.0
+
+[node name="ChallengesWindow" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -538.0
+offset_top = 16.0
+offset_right = -498.0
+offset_bottom = 56.0
+
+[node name="BetWindow" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimeBetter" type="HSlider" parent="BetWindow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -7.225
+anchor_top = 6.625
+anchor_right = 7.275
+anchor_bottom = 7.025
+offset_top = -3.05176e-05
+offset_right = -3.05176e-05
+
+[node name="Label3" type="Label" parent="BetWindow/TimeBetter"]
+layout_mode = 0
+offset_left = -207.0
+offset_top = -18.0
+offset_right = -167.0
+offset_bottom = 5.0
+theme = ExtResource("3_weu2x")
+
+[node name="BetBackButton" type="Button" parent="BetWindow"]
+layout_mode = 0
+offset_left = -280.0
+offset_top = 173.0
+offset_right = -180.0
+offset_bottom = 236.0
+theme = ExtResource("3_weu2x")
+text = "Back"
+
+[node name="BetConfirmButton" type="Button" parent="BetWindow"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 169.0
+offset_right = 360.0
+offset_bottom = 232.0
+theme = ExtResource("3_weu2x")
+text = "Confirm
+"
+
+[node name="BetButton" type="Button" parent="."]
+offset_left = -531.0
+offset_top = -75.0
+offset_right = -352.0
+offset_bottom = -12.0
+theme = ExtResource("3_weu2x")
+text = "Bet Time"
+
+[node name="Challenges" type="Button" parent="."]
+offset_left = -538.0
+offset_top = 16.0
+offset_right = -321.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 40
+text = "Challenges"
+
+[connection signal="timeout" from="Life" to="." method="_on_life_timeout"]
+[connection signal="drag_ended" from="BetWindow/TimeBetter" to="." method="_on_time_better_drag_ended"]
+[connection signal="pressed" from="BetWindow/BetBackButton" to="." method="_on_bet_back_button_pressed"]
+[connection signal="pressed" from="BetWindow/BetConfirmButton" to="." method="_on_bet_confirm_button_pressed"]
+[connection signal="pressed" from="BetButton" to="." method="_on_bet_button_pressed"]

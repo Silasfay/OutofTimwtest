@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bow4w8rbjshn4"]
+
+[ext_resource type="PackedScene" uid="uid://bbhtoew0288ox" path="res://Scenes/Hitzone.tscn" id="1_uy8v2"]
+
+[node name="QTEZONE" type="Node2D"]
+rotation = 3.14159
+
+[node name="Area2D3" parent="." instance=ExtResource("1_uy8v2")]
+position = Vector2(-58, 5)
+rotation = 1.40499
+
+[node name="Area2D2" parent="." instance=ExtResource("1_uy8v2")]
+rotation = 1.5708
+
+[node name="Area2D" parent="." instance=ExtResource("1_uy8v2")]
+position = Vector2(58, 5)
+rotation = -1.40555
